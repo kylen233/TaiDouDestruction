@@ -325,6 +325,7 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Server\ServerProperty.cs" />
     <Compile Include="Assets\Scripts\tool\Cube.cs" />
+    <Compile Include="Assets\Scripts\tool\Gradient.cs" />
     <Compile Include="Assets\Scripts\tool\RotateWithMouse.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenuController.cs" />
     <Compile Include="Assets\villarger_B_Boy\scripts\characterRotate.cs" />
