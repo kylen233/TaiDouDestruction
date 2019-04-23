@@ -322,7 +322,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
-    <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Character\PlayBar.cs" />
+    <Compile Include="Assets\Scripts\Character\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\Character\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\Character\TopBar.cs" />
     <Compile Include="Assets\Scripts\Server\ServerProperty.cs" />
     <Compile Include="Assets\Scripts\tool\Cube.cs" />
     <Compile Include="Assets\Scripts\tool\Gradient.cs" />

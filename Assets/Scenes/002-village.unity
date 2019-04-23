@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 50751481}
   m_Layer: 5
-  m_Name: powerRecover
+  m_Name: EnergyRecover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 106775594}
   - component: {fileID: 106775593}
   m_Layer: 5
-  m_Name: ExperienceText
+  m_Name: ToughenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -456,7 +456,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100/100
+  m_Text: 50/50
 --- !u!222 &106775595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 191654613}
   - component: {fileID: 191654612}
   m_Layer: 5
-  m_Name: experiencText
+  m_Name: ToughenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 229432948}
   - component: {fileID: 229432947}
   m_Layer: 5
-  m_Name: powerAllRecoverText
+  m_Name: EnergyAllRecoverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 292128375}
   - component: {fileID: 292128374}
   m_Layer: 5
-  m_Name: diamondNumber
+  m_Name: diamondNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 354658691}
   - component: {fileID: 354658690}
   m_Layer: 5
-  m_Name: powerNumber
+  m_Name: EnergyNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1701,6 +1701,7 @@ RectTransform:
   m_Children:
   - {fileID: 1377093670}
   - {fileID: 104593659}
+  - {fileID: 858687251}
   m_Father: {fileID: 744940472}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2065,7 +2066,7 @@ GameObject:
   - component: {fileID: 569657564}
   - component: {fileID: 569657563}
   m_Layer: 5
-  m_Name: 'powerRecoverTimeText '
+  m_Name: 'EnergyRecoverTimeText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2281,6 +2282,117 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 616717931}
+--- !u!1 &665366704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 665366705}
+  - component: {fileID: 665366708}
+  - component: {fileID: 665366707}
+  - component: {fileID: 665366706}
+  m_Layer: 5
+  m_Name: ButtondiamondPlusButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665366705
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665366704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6999999, y: 0.6999999, z: 0.6999999}
+  m_Children: []
+  m_Father: {fileID: 1707618717}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 67.9, y: 0.0000011921}
+  m_SizeDelta: {x: 44.196, y: 34.96}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665366706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665366704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: b4cd28e225a296a488589d302ae35017,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 19e006212449db34a803594d5d7d1251, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 831724cb44ea1f346a9fc8cb30b4795b, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 665366707}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &665366707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665366704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a58b8accde92e29498f2e098dfb1ffba, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &665366708
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665366704}
 --- !u!1 &672245826
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,7 +2403,7 @@ GameObject:
   - component: {fileID: 672245827}
   - component: {fileID: 672245828}
   m_Layer: 5
-  m_Name: ' PowerSlider'
+  m_Name: EnergySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,7 +2559,7 @@ GameObject:
   - component: {fileID: 731177408}
   - component: {fileID: 731177407}
   m_Layer: 5
-  m_Name: experienceText
+  m_Name: ExpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2623,9 +2735,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 744940472}
+  - component: {fileID: 744940474}
   - component: {fileID: 744940473}
   m_Layer: 5
-  m_Name: TOPBar
+  m_Name: TopBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,6 +2787,21 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &744940474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744940471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31bf620f3800c841baa86e510f9cf23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DiamondText: {fileID: 292128374}
+  CoinText: {fileID: 1377093671}
+  DiamondPulsButton: {fileID: 665366706}
+  CoinPulsButton: {fileID: 858687252}
 --- !u!1 &809294224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,7 +2937,7 @@ GameObject:
   - component: {fileID: 812764558}
   - component: {fileID: 812764557}
   m_Layer: 5
-  m_Name: experiencNumber
+  m_Name: ToughenNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2967,7 +3095,7 @@ GameObject:
   - component: {fileID: 856637457}
   - component: {fileID: 856637456}
   m_Layer: 5
-  m_Name: 'powerAllRecoverTimeText '
+  m_Name: 'EnergyAllRecoverTimeText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3044,6 +3172,117 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 856637454}
+--- !u!1 &858687250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 858687251}
+  - component: {fileID: 858687254}
+  - component: {fileID: 858687253}
+  - component: {fileID: 858687252}
+  m_Layer: 5
+  m_Name: ButtoncoinPlusButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &858687251
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858687250}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_Children: []
+  m_Father: {fileID: 510325180}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 68.2, y: 0}
+  m_SizeDelta: {x: 44.196, y: 34.96}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &858687252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858687250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: b4cd28e225a296a488589d302ae35017,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 19e006212449db34a803594d5d7d1251, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 831724cb44ea1f346a9fc8cb30b4795b, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 858687253}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &858687253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858687250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a58b8accde92e29498f2e098dfb1ffba, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &858687254
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858687250}
 --- !u!1 &864078811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3570,7 @@ GameObject:
   - component: {fileID: 944239502}
   - component: {fileID: 944239501}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text-Toughen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4014,7 +4253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1295396881}
   m_Layer: 5
-  m_Name: experiencRecover
+  m_Name: ToughenRecover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4048,6 +4287,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1314376233}
+  - component: {fileID: 1314376234}
   m_Layer: 5
   m_Name: PlayerStatus
   m_TagString: Untagged
@@ -4081,6 +4321,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1314376234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314376232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345bb5da395fdca41b399b38826b51c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadPortrait: {fileID: 347113852}
+  LvText: {fileID: 1503838381}
+  NameText: {fileID: 1667352615}
+  PowerText: {fileID: 266044716}
+  ExpText: {fileID: 1682300231}
+  ExpSlider: {fileID: 891861597}
+  DimondText: {fileID: 2138125272}
+  CoinText: {fileID: 1456129091}
+  SparText: {fileID: 175821533}
+  SideriText: {fileID: 111738610}
+  EnergyText: {fileID: 354658691}
+  ToughenText: {fileID: 812764558}
+  EnergyRecoverText: {fileID: 569657564}
+  EnergyAllRecoverText: {fileID: 856637457}
+  ToughenRecoverText: {fileID: 1836038732}
+  TouchenAllRecoverText: {fileID: 1812715848}
 --- !u!1 &1316996998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,7 +4449,7 @@ GameObject:
   - component: {fileID: 1348633516}
   - component: {fileID: 1348633515}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text-Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4271,7 +4538,7 @@ GameObject:
   - component: {fileID: 1377093672}
   - component: {fileID: 1377093671}
   m_Layer: 5
-  m_Name: coinNumber
+  m_Name: coinNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4403,6 +4670,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1402150055}
+  - component: {fileID: 1402150056}
   m_Layer: 5
   m_Name: PlayerBar
   m_TagString: Untagged
@@ -4429,6 +4697,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1402150056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402150054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069d20d64030124eb9f24ea881d8f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadSprite: {fileID: 939164441}
+  NameText: {fileID: 1472129417}
+  LevelText: {fileID: 744144478}
+  ToughenText: {fileID: 106775594}
+  EnergyText: {fileID: 1683655046}
+  ToughenSlider: {fileID: 1809005723}
+  EnergSlider: {fileID: 672245828}
+  EnergPlusButton: {fileID: 2142938778}
+  ToughenPlusButton: {fileID: 1532635328}
+--- !u!1 &1427250821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1427250822}
+  - component: {fileID: 1427250823}
+  m_Layer: 0
+  m_Name: GameObjectController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427250822
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427250821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1427250823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427250821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3519af8443c22c9459645279fd7f9dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1438288768
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,7 +5229,7 @@ GameObject:
   - component: {fileID: 1532635329}
   - component: {fileID: 1532635328}
   m_Layer: 5
-  m_Name: ButtonExperience
+  m_Name: ButtonToughen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5009,7 +5337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593683928}
   m_Layer: 5
-  m_Name: powerState
+  m_Name: EnergyState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5080,7 +5408,7 @@ GameObject:
   - component: {fileID: 1604093779}
   - component: {fileID: 1604093778}
   m_Layer: 5
-  m_Name: experiencRecoverText
+  m_Name: ToughenRecoverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5136,7 +5464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F53\u529B\u6062\u590D\u65F6\u95F4\uFF1A"
+  m_Text: "\u5386\u7EC3\u6062\u590D\u65F6\u95F4\uFF1A"
 --- !u!222 &1604093779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5154,7 +5482,7 @@ GameObject:
   - component: {fileID: 1638066187}
   - component: {fileID: 1638066186}
   m_Layer: 5
-  m_Name: gold
+  m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5403,7 +5731,7 @@ GameObject:
   - component: {fileID: 1683655046}
   - component: {fileID: 1683655045}
   m_Layer: 5
-  m_Name: ' power-Text'
+  m_Name: Energy-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5489,7 +5817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702764525}
   m_Layer: 5
-  m_Name: 'powerAllRecover '
+  m_Name: 'EnergyAllRecover '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5656,6 +5984,7 @@ RectTransform:
   m_Children:
   - {fileID: 292128373}
   - {fileID: 1221352384}
+  - {fileID: 665366705}
   m_Father: {fileID: 744940472}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5708,7 +6037,7 @@ GameObject:
   - component: {fileID: 1748132828}
   - component: {fileID: 1748132827}
   m_Layer: 5
-  m_Name: powerRecoverText
+  m_Name: EnergyRecoverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5781,7 +6110,7 @@ GameObject:
   - component: {fileID: 1809005722}
   - component: {fileID: 1809005723}
   m_Layer: 5
-  m_Name: ExperienceSlider
+  m_Name: ToughenSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5868,7 +6197,7 @@ GameObject:
   - component: {fileID: 1812715848}
   - component: {fileID: 1812715847}
   m_Layer: 5
-  m_Name: 'experiencAllRecoverTimeText '
+  m_Name: 'ToughenAllRecoverTimeText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5957,7 +6286,7 @@ GameObject:
   - component: {fileID: 1836038732}
   - component: {fileID: 1836038731}
   m_Layer: 5
-  m_Name: 'experiencRecoverTimeText '
+  m_Name: 'ToughenRecoverTimeText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6111,7 +6440,7 @@ GameObject:
   - component: {fileID: 1861495897}
   - component: {fileID: 1861495896}
   m_Layer: 5
-  m_Name: powerText
+  m_Name: EnergyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6308,7 +6637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999011104}
   m_Layer: 5
-  m_Name: experiencState
+  m_Name: ToughenState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6569,7 +6898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2097287334}
   m_Layer: 5
-  m_Name: 'experiencAllRecover '
+  m_Name: 'ToughenAllRecover '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6763,7 +7092,7 @@ GameObject:
   - component: {fileID: 2136849594}
   - component: {fileID: 2136849593}
   m_Layer: 5
-  m_Name: experiencAllRecoverText
+  m_Name: ToughenAllRecoverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6819,7 +7148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F53\u529B\u5168\u90E8\u6062\u590D\uFF1A"
+  m_Text: "\u5386\u7EC3\u5168\u90E8\u6062\u590D\uFF1A"
 --- !u!222 &2136849594
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6927,7 +7256,7 @@ GameObject:
   - component: {fileID: 2142938779}
   - component: {fileID: 2142938778}
   m_Layer: 5
-  m_Name: ButtonPower
+  m_Name: Buttonenergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
