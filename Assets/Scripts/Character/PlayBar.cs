@@ -21,38 +21,31 @@ public class PlayBar : MonoBehaviour
     void Awake()
     {
 
+        PlayerInfo._instance.PlayerInfoChangeEvent += PlayerBarInfoChange;
+    }
 
+    void OnEnable()
+    {
+     
+        
     }
     void Start ()
     {
-        //  PlayerInfo._instance.PlayerInfoChangeEvent += PlayerInfoChange;
-            Debug.Log(111);
-            PlayerInfo._instance.PlayerInfoChangeEvent +=Test;
-      
-    }
 
-    void Test(int i)
-    {
-        Debug.Log(i);
-    }
-    void OnEnable()
-    {
        
+
     }
 
-    //void Init()
-    //{
-    //    NameText.text = PlayerInfo._instance.Name;
-    //    LevelText.text = PlayerInfo._instance.Level.ToString();
-    //}
+  
+  
 
-    void PlayerInfoChange(InfoType infoType)
+ private   void PlayerBarInfoChange(InfoType infoType)
     {
-        Debug.Log(11);
+
         PlayerInfo instance=PlayerInfo._instance;
         if (infoType==InfoType.All)
         {
-          
+            //TouXiangTODO
             NameText.text = instance.Name;
             LevelText.text = instance.Level.ToString();
             EnergyText.text = instance.Energy.ToString() + "/100";

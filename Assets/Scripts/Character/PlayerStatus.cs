@@ -21,14 +21,38 @@ public class PlayerStatus : MonoBehaviour
     public Text EnergyAllRecoverText;//体力全部恢复时间
     public Text ToughenRecoverText; //历练恢复时间
     public Text TouchenAllRecoverText; //历练全部恢复时间
-     
-	
+
+    void Awake()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent += PlayerStatusInfoChange;
+    }
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 	     
 	}
+
+    private void PlayerStatusInfoChange(InfoType infoType)
+    {
+        PlayerInfo _instancePlayerInfo = PlayerInfo._instance;
+        if (infoType==InfoType.All)
+        {
+            //touxiangTODO
+            LvText.text = _instancePlayerInfo.Level.ToString();
+            NameText.text = _instancePlayerInfo.Name;
+            PowerText.text = _instancePlayerInfo.Power.ToString();
+            ExpText.text = _instancePlayerInfo.Exp.ToString() + "/500";
+            ExpSlider.value = _instancePlayerInfo.Exp / 500f;
+            DimondText.text = _instancePlayerInfo.Diamond.ToString();
+            CoinText.text = _instancePlayerInfo.Coin.ToString();
+            SparText.text = _instancePlayerInfo.Spar.ToString();
+            SideriText.text = _instancePlayerInfo.Siderite.ToString();
+            EnergyText.text = _instancePlayerInfo.Energy.ToString() + "/100";
+            ToughenText.text = _instancePlayerInfo.Toughen.ToString() + "/50";
+            
+        }
+    }
 }

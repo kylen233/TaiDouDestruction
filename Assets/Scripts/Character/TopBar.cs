@@ -10,11 +10,50 @@ public class TopBar : MonoBehaviour
     public Text CoinText;
     public Button DiamondPulsButton;
     public Button CoinPulsButton;
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    void Awake()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent += TopBarInfoChange;
+        DiamondPulsButton.onClick.AddListener(DiamondPulsOnClick);
+        CoinPulsButton.onClick.AddListener(CoinPulsOnClick);
+    }
+    void Start ()
+	{
+	    
+          
+    }
+    /// <summary>
+    /// 钻石增加
+    /// </summary>
+    public void DiamondPulsOnClick()  
+    {
+
+    }
+    /// <summary>
+    /// 金币增加
+    /// </summary>
+    public void CoinPulsOnClick()
+    {
+
+    }
+    private void TopBarInfoChange(InfoType infoType)
+    {
+        PlayerInfo _instancePlayerInfo = PlayerInfo._instance;
+        if (infoType==InfoType.All)
+        {
+            DiamondText.text = _instancePlayerInfo.Diamond.ToString();
+            CoinText.text = _instancePlayerInfo.Coin.ToString();
+            return;
+        }
+        switch (infoType)
+        {
+            case InfoType.Diamond:
+                DiamondText.text = _instancePlayerInfo.Diamond.ToString();
+                break;
+            case InfoType.Coin:
+                CoinText.text = _instancePlayerInfo.Coin.ToString();
+                break;
+        }
+    }
 	void Update () {
 		
 	}

@@ -8,7 +8,9 @@ public  enum InfoType  //角色信息更新枚举
     Level,
     Toughen,
     Energy,
-    All
+    All,
+    Diamond,
+    Coin
 }
 
 public class PlayerInfo : MonoBehaviour {
@@ -24,6 +26,8 @@ public class PlayerInfo : MonoBehaviour {
     private int _coin;
     private int _energy;
     private int _toughen;
+    private int _spar;
+    private int _siderite;
     #endregion
     #region   //属性方法
     public string Name
@@ -142,44 +146,69 @@ public class PlayerInfo : MonoBehaviour {
             _toughen = value;
         }
     }
+
+    public int Spar
+    {
+        get
+        {
+            return _spar;
+        }
+
+        set
+        {
+            _spar = value;
+        }
+    }
+
+    public int Siderite
+    {
+        get
+        {
+            return _siderite;
+        }
+
+        set
+        {
+            _siderite = value;
+        }
+    }
     #endregion
-  
+
     public static PlayerInfo _instance;
     private float energyTimer=0;
     private float toughenTimer = 0;
-    public delegate void PlayerInfoChangeDelegate(int nub);
+    public delegate void PlayerInfoChangeDelegate(InfoType infoType);
     public event PlayerInfoChangeDelegate PlayerInfoChangeEvent;
 
     void Awake()
     {
         _instance = this;
-        
+     
     }
+    
     void Start ()
     {
         Init();
     }
 
-    void OnEnable()
-    {
-       
-    }
+    
     void Init()
     {
         _name = "Kylen233";
         _headPortrait = "头像底板女性";
         _level = 10;
-        _power = 200;
+        _power = 4396;
         _exp = 200;
-        _diamond = 500;
-        _coin = 200;
+        _diamond = 231;
+        _coin = 54;
         _energy = 37;
         _toughen = 14;
-        PlayerInfoChangeEvent += i => Debug.Log(i + 1);
-        PlayerInfoChangeEvent(1);
+        _spar = 1;
+        _siderite = 0;
+        PlayerInfoChangeEvent(InfoType.All);
        
     }
-	// Update is called once per frame
+	
 	void Update () {
     //    Debug.Log("体力时间"+energyTimer);
     //    Debug.Log("历练时间"+toughenTimer);
