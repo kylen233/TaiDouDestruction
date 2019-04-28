@@ -175,8 +175,8 @@ public class PlayerInfo : MonoBehaviour {
     #endregion
 
     public static PlayerInfo _instance;
-    private float energyTimer=0;
-    private float toughenTimer = 0;
+    public float energyTimer=0;
+    public float toughenTimer = 0;
     public delegate void PlayerInfoChangeDelegate(InfoType infoType);
     public event PlayerInfoChangeDelegate PlayerInfoChangeEvent;
 
@@ -215,10 +215,12 @@ public class PlayerInfo : MonoBehaviour {
 	    if (_energy<100)  
 	    {
 	        energyTimer += Time.deltaTime;
-	        if (energyTimer>3)
+	        PlayerInfoChangeEvent(InfoType.Energy);
+	        if (energyTimer>60)
 	        {
 	            _energy++;
-	            energyTimer = 60;
+	            energyTimer = 0;
+
 	        }
 	    }    //体力自动增长
 	    else
@@ -226,10 +228,10 @@ public class PlayerInfo : MonoBehaviour {
 	        energyTimer = 0;
 
 	    }
-	    if (_toughen < 100)    
+	    if (_toughen < 50)    
 	    {
 	        toughenTimer += Time.deltaTime;
-	        if (toughenTimer > 3)
+	        if (toughenTimer > 60)
 	        {
                 _toughen++;
 	            toughenTimer = 0;
