@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,10 +22,15 @@ public class PlayerStatus : MonoBehaviour
     public Text EnergyAllRecoverText;//体力全部恢复时间
     public Text ToughenRecoverText; //历练恢复时间
     public Text TouchenAllRecoverText; //历练全部恢复时间
+    public Button CloseButton;
+    public static PlayerStatus _instance;
+   
 
     void Awake()
     {
+        _instance = this;
         PlayerInfo._instance.PlayerInfoChangeEvent += PlayerStatusInfoChange;
+        CloseButton.onClick.AddListener(delegate() { ShowOrHidePlayStatus(DotweenDir.back);});
     }
 	void Start () {
 		
@@ -32,10 +38,14 @@ public class PlayerStatus : MonoBehaviour
 	
 
 	void Update () {
-	     
+	 
 	}
-
+  /// <summary>
+  /// 响应注册事件
+  /// </summary>
+  /// <param name="infoType"></param>
     private void PlayerStatusInfoChange(InfoType infoType)
+
     {
         PlayerInfo _instancePlayerInfo = PlayerInfo._instance;
         if (infoType==InfoType.All)
@@ -44,21 +54,29 @@ public class PlayerStatus : MonoBehaviour
             LvText.text = _instancePlayerInfo.Level.ToString();
             NameText.text = _instancePlayerInfo.Name;
             PowerText.text = _instancePlayerInfo.Power.ToString();
-            ExpText.text = _instancePlayerInfo.Exp.ToString() + "/500";
-            ExpSlider.value = _instancePlayerInfo.Exp / 500f;
+            ExpText.text = _instancePlayerInfo.Exp.ToString() + "/" + MyTool.GetExpValue(_instancePlayerInfo.Level);
+            ExpSlider.value = (float)_instancePlayerInfo.Exp / MyTool.GetExpValue(_instancePlayerInfo.Level);
             DimondText.text = _instancePlayerInfo.Diamond.ToString();
             CoinText.text = _instancePlayerInfo.Coin.ToString();
             SparText.text = _instancePlayerInfo.Spar.ToString();
-            SideriText.text = _instancePlayerInfo.Siderite.ToString();        
+            SideriText.text = _instancePlayerInfo.Siderite.ToString();   
+            return;
         }
-
-        if (infoType==InfoType.Energy)
+        switch (infoType)
         {
-            UptateEnergyAndToughen();
+            case InfoType.Energy:
+                UptateEnergyAndToughen();
+                break;
+            case InfoType.Toughen:
+                UptateEnergyAndToughen();
+                break;
         }
-    }
 
-    void UptateEnergyAndToughen() //更新体力和时间
+    }
+ /// <summary>
+ /// 更新体力和历练
+ /// </summary>
+    void UptateEnergyAndToughen()   
     {
         PlayerInfo _instancePlayerInfo = PlayerInfo._instance;
         EnergyText.text = _instancePlayerInfo.Energy.ToString() + "/100";
@@ -70,26 +88,18 @@ public class PlayerStatus : MonoBehaviour
         }
         else
         {
-            int remainTime = 60 - (int) _instancePlayerInfo.energyTimer;
+
+            int remainTime = 60 - (int)_instancePlayerInfo.energyTimer;
             string str = remainTime > 9 ? remainTime.ToString() : "0" + remainTime.ToString();
             EnergyRecoverText.text = "00 : 00 : " + str;
             int remainEnergy = 99 - _instancePlayerInfo.Energy;
-            if (remainEnergy>60)
-            {
-                string str2 = "01 : ";
-                int temp = remainEnergy - 60;
-                string str3 = temp > 9 ? temp.ToString() : "0" + temp.ToString();
-                EnergyAllRecoverText.text = str2 + str3 + " : " + str;
-            }
-            else
-            {
-                string str2 = "00 : ";
-                string str3 = remainEnergy > 9 ? remainEnergy.ToString() : "0" + remainEnergy;
-                EnergyAllRecoverText.text = str2 + str3 + " : " + str;
+            int hour = remainEnergy / 60;
+            int minute = remainEnergy % 60;
+            string str3 = hour > 0 ? "0" + hour.ToString() + " : " : "00 :";
 
-            }
-          
-          
+            string str2 = minute> 9 ? minute.ToString() : "0" + minute.ToString();
+            EnergyAllRecoverText.text = str3 + str2 + " : " + str;
+
         }
         if (_instancePlayerInfo.Toughen >=50)
         {
@@ -108,4 +118,29 @@ public class PlayerStatus : MonoBehaviour
 
 
     }
+    /// <summary>
+   /// 显示或隐藏人物状态面板
+   /// </summary>
+   /// <param name="dotweenDir"></param>
+    public static void ShowOrHidePlayStatus(DotweenDir dotweenDir)
+    {
+        DOTweenAnimation _doTween = GameObject.Find("PlayerStatus").GetComponent<DOTweenAnimation>();
+        if (_doTween == null)
+        {
+            Debug.Log("animation is null");
+            return;
+        }
+        if (dotweenDir == DotweenDir.forward)
+        {
+            _doTween.DOPlayForward();
+        
+        }
+        else
+        {
+            _doTween.DOPlayBackwards();
+            
+        }
+    }
+
 }
+ 

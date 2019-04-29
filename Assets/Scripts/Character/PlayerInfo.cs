@@ -13,6 +13,12 @@ public  enum InfoType  //角色信息更新枚举
     Coin
 }
 
+public enum DotweenDir
+{
+    forward,
+    back
+}
+
 public class PlayerInfo : MonoBehaviour {
 
     #region   PlayProperty //人物属性

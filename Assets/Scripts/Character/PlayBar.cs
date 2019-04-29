@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,29 +17,26 @@ public class PlayBar : MonoBehaviour
     public Slider EnergSlider;
     public Button EnergPlusButton;
     public Button ToughenPlusButton;
+    public Button HeadSpiteButton;
     #endregion
 
     void Awake()
     {
 
         PlayerInfo._instance.PlayerInfoChangeEvent += PlayerBarInfoChange;
-    }
-
-    void OnEnable()
-    {
-     
+        HeadSpiteButton.onClick.AddListener(delegate() { PlayerStatus.ShowOrHidePlayStatus(DotweenDir.forward);});
         
     }
+    
     void Start ()
     {
 
-       
-
     }
 
-  
-  
-
+/// <summary>
+/// 响应注册事件
+/// </summary>
+/// <param name="infoType"></param>
  private   void PlayerBarInfoChange(InfoType infoType)
     {
 
@@ -75,9 +73,10 @@ public class PlayBar : MonoBehaviour
                 break;
         }
     }
-   
-    // Update is called once per frame
-    void Update () {
-	  
-    }
+/// <summary>
+/// 显示隐藏人物状态面板
+/// </summary>
+/// <param name="dotweenDir"></param>
+ 
+
 }
