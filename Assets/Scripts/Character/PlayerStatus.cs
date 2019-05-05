@@ -23,6 +23,9 @@ public class PlayerStatus : MonoBehaviour
     public Text ToughenRecoverText; //历练恢复时间
     public Text TouchenAllRecoverText; //历练全部恢复时间
     public Button CloseButton;
+    public Button ChangeNameButton;
+    public InputField ChangeNameInputField;
+    public GameObject ChangeNamePanel;
     public static PlayerStatus _instance;
    
 
@@ -59,17 +62,23 @@ public class PlayerStatus : MonoBehaviour
             DimondText.text = _instancePlayerInfo.Diamond.ToString();
             CoinText.text = _instancePlayerInfo.Coin.ToString();
             SparText.text = _instancePlayerInfo.Spar.ToString();
-            SideriText.text = _instancePlayerInfo.Siderite.ToString();   
+            SideriText.text = _instancePlayerInfo.Siderite.ToString(); 
             return;
         }
+
         switch (infoType)
         {
+                
             case InfoType.Energy:
                 UptateEnergyAndToughen();
                 break;
             case InfoType.Toughen:
                 UptateEnergyAndToughen();
                 break;
+            case InfoType.Name:           
+                NameText.text = _instancePlayerInfo.Name;
+                break;
+                
         }
 
     }
@@ -141,6 +150,29 @@ public class PlayerStatus : MonoBehaviour
             
         }
     }
-
+    /// <summary>
+    /// 确定更改名字
+    /// </summary>
+    public void ChangeNameSure()
+    {
+        PlayerInfo._instance.ChangeName(ChangeNameInputField.text);
+        Debug.Log(ChangeNameInputField.text);
+        ChangeNamePanel.SetActive(false);
+    }
+    /// <summary>
+    /// 取消更改名字
+    /// </summary>
+    public void ChangeNameCanel()
+    {
+        ChangeNameInputField.text = "";
+        ChangeNamePanel.SetActive(false);
+    }
+   /// <summary>
+   /// 显示面板
+   /// </summary>
+    public void ChangeNamePanelShow()
+    {
+        ChangeNamePanel.SetActive(true);
+    }
 }
  

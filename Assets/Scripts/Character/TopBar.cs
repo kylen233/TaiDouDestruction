@@ -52,6 +52,7 @@ public class TopBar : MonoBehaviour
             case InfoType.Coin:
                 CoinText.text = _instancePlayerInfo.Coin.ToString();
                 break;
+           
         }
     }
 	void Update () {

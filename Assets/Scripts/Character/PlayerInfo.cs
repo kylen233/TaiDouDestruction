@@ -181,7 +181,9 @@ public class PlayerInfo : MonoBehaviour {
     #endregion
 
     public static PlayerInfo _instance;
+    [HideInInspector]
     public float energyTimer=0;
+    [HideInInspector]
     public float toughenTimer = 0;
     public delegate void PlayerInfoChangeDelegate(InfoType infoType);
     public event PlayerInfoChangeDelegate PlayerInfoChangeEvent;
@@ -214,7 +216,13 @@ public class PlayerInfo : MonoBehaviour {
         PlayerInfoChangeEvent(InfoType.All);
        
     }
-	
+
+    public void ChangeName(string newName)
+    {
+        this.Name= newName;
+        Debug.Log("ok");
+        PlayerInfoChangeEvent(InfoType.Name);
+    }
 	void Update () {
     //    Debug.Log("体力时间"+energyTimer);
     //    Debug.Log("历练时间"+toughenTimer);
