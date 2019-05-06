@@ -21,19 +21,29 @@ public enum DotweenDir
 
 public class PlayerInfo : MonoBehaviour {
 
-    #region   PlayProperty //人物属性
+    #region   人物属性
 
-    private string _name;
-    private string _headPortrait;
-    private int _level = 1;
-    private int _power = 1;
-    private int _exp = 0;
-    private int _diamond;
-    private int _coin;
-    private int _energy;
-    private int _toughen;
-    private int _spar;
-    private int _siderite;
+    private string _name;//玩家姓名
+    private string _headPortrait;//头像
+    private int _level = 1;//等级
+    private int _power = 1;//战斗
+    private int _exp = 0;//经验
+    private int _diamond;//钻石
+    private int _coin;//金币
+    private int _energy;//体力
+    private int _toughen;//历练
+    private int _spar;//晶石
+    private int _siderite;//y陨铁
+    private int _damage;//伤害
+    private int _hp;//血量
+    private int _helmID;//头盔
+    private int _clothID;//衣服
+    private int _weaponID;//武器
+    private int _shoesID;//鞋子
+    private int _necklaceID;//项链
+    private int _braceletID;//手镯
+    private int _ringID;//戒指
+    private int _wingID;//翅膀
     #endregion
     #region   //属性方法
     public string Name
@@ -176,6 +186,136 @@ public class PlayerInfo : MonoBehaviour {
         set
         {
             _siderite = value;
+        }
+    }
+
+    public int Damage
+    {
+        get
+        {
+            return _damage;
+        }
+
+        set
+        {
+            _damage = value;
+        }
+    }
+
+    public int Hp
+    {
+        get
+        {
+            return _hp;
+        }
+
+        set
+        {
+            _hp = value;
+        }
+    }
+
+    public int HelmID
+    {
+        get
+        {
+            return _helmID;
+        }
+
+        set
+        {
+            _helmID = value;
+        }
+    }
+
+    public int ClothID
+    {
+        get
+        {
+            return _clothID;
+        }
+
+        set
+        {
+            _clothID = value;
+        }
+    }
+
+    public int WeaponID
+    {
+        get
+        {
+            return _weaponID;
+        }
+
+        set
+        {
+            _weaponID = value;
+        }
+    }
+
+    public int ShoesID
+    {
+        get
+        {
+            return _shoesID;
+        }
+
+        set
+        {
+            _shoesID = value;
+        }
+    }
+
+    public int NecklaceID
+    {
+        get
+        {
+            return _necklaceID;
+        }
+
+        set
+        {
+            _necklaceID = value;
+        }
+    }
+
+    public int BraceletID
+    {
+        get
+        {
+            return _braceletID;
+        }
+
+        set
+        {
+            _braceletID = value;
+        }
+    }
+
+    public int RingID
+    {
+        get
+        {
+            return _ringID;
+        }
+
+        set
+        {
+            _ringID = value;
+        }
+    }
+
+    public int WingID
+    {
+        get
+        {
+            return _wingID;
+        }
+
+        set
+        {
+            _wingID = value;
         }
     }
     #endregion
