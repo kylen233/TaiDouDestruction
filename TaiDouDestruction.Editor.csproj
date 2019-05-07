@@ -346,6 +346,7 @@
     <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Resources\InventoryInfoList.txt" />
     <None Include="Assets\villarger_B_Boy\ReadMe [V 1.4]  02 06.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

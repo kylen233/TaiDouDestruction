@@ -328,6 +328,7 @@
     <Compile Include="Assets\Scripts\Character\TopBar.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Server\ServerProperty.cs" />
     <Compile Include="Assets\Scripts\tool\Cube.cs" />
     <Compile Include="Assets\Scripts\tool\Gradient.cs" />
@@ -350,6 +351,7 @@
     <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Resources\InventoryInfoList.txt" />
     <None Include="Assets\villarger_B_Boy\ReadMe [V 1.4]  02 06.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

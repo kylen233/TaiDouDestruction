@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum InventoryType //物品类型
 {
-    Euuip,
-    Drug
+    Equip,
+    Drug,
+    Box
 }
 
 public enum EquipType   //装备类型
@@ -238,4 +239,8 @@ public class Inventory
     }
     #endregion
 
+    public override string ToString()
+    {
+        return string.Format("Id: {0}, Name: {1}, Icon: {2}, InventoryType: {3}, EquipType: {4}, Price: {5}, StartLevel: {6}, Quality: {7}, Damage: {8}, Hp: {9}, Defense: {10}, Power: {11}, InfoType: {12}, AppleValue: {13}, Describe: {14}", id, name, icon, inventoryType, equipType, price, startLevel, quality, damage, hp, defense, power, infoType, appleValue, describe);
+    }
 }
