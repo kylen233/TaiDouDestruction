@@ -33,11 +33,12 @@ public class PlayerStatus : MonoBehaviour
     {
         _instance = this;
         PlayerInfo._instance.PlayerInfoChangeEvent += PlayerStatusInfoChange;
-        CloseButton.onClick.AddListener(delegate() { ShowOrHidePlayStatus(DotweenDir.back);});
+
     }
 	void Start () {
-		
-	}
+	 
+	    CloseButton.onClick.AddListener(delegate () { ShowOrHidePlayStatus(DotweenDir.back); });
+    }
 	
 
 	void Update () {
@@ -57,8 +58,8 @@ public class PlayerStatus : MonoBehaviour
             LvText.text = _instancePlayerInfo.Level.ToString();
             NameText.text = _instancePlayerInfo.Name;
             PowerText.text = _instancePlayerInfo.Power.ToString();
-            ExpText.text = _instancePlayerInfo.Exp.ToString() + "/" + MyTool.GetExpValue(_instancePlayerInfo.Level);
-            ExpSlider.value = (float)_instancePlayerInfo.Exp / MyTool.GetExpValue(_instancePlayerInfo.Level);
+            ExpText.text = _instancePlayerInfo.Exp.ToString() + "/" + MyTool.GetExpValue(_instancePlayerInfo.Level+1);
+            ExpSlider.value = (float)_instancePlayerInfo.Exp / MyTool.GetExpValue(_instancePlayerInfo.Level+1);
             DimondText.text = _instancePlayerInfo.Diamond.ToString();
             CoinText.text = _instancePlayerInfo.Coin.ToString();
             SparText.text = _instancePlayerInfo.Spar.ToString();

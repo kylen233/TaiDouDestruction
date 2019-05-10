@@ -24,13 +24,13 @@ public class PlayBar : MonoBehaviour
     {
 
         PlayerInfo._instance.PlayerInfoChangeEvent += PlayerBarInfoChange;
-        HeadSpiteButton.onClick.AddListener(delegate() { PlayerStatus.ShowOrHidePlayStatus(DotweenDir.forward);});
-        
     }
     
     void Start ()
     {
 
+     
+        HeadSpiteButton.onClick.AddListener(delegate () { PlayerStatus.ShowOrHidePlayStatus(DotweenDir.forward); });
     }
 
 /// <summary>

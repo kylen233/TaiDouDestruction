@@ -8,19 +8,20 @@ public class InventoryManager : MonoBehaviour
 {
 
     private TextAsset inventoryInfoList;
-    private Dictionary<int, Inventory> inventoryDic=new Dictionary<int, Inventory>();
-    private Dictionary<int,InventoryItem> inventoryItemDic=new Dictionary<int, InventoryItem>();
+    public Dictionary<int, Inventory> inventoryDic=new Dictionary<int, Inventory>();
+  //  private Dictionary<int,InventoryItem> inventoryItemDic=new Dictionary<int, InventoryItem>();
+    private List<InventoryItem> inventoryItemList = new List<InventoryItem>();
+    public static InventoryManager _instance;
+
 
     void Awake()
     {
+        _instance = this;
         ReadInventoryInfo();
         ReadInventoryItemInfo();
     }
 	void Start ()
 	{
-	   
-     
-	   
 
 	}
 
@@ -141,29 +142,30 @@ public class InventoryManager : MonoBehaviour
             if (temp.InventoryType==InventoryType.Equip)
             {
                 InventoryItem it=new InventoryItem();
-                it.Count = 1;
-                it.Level = Random.Range(0, 3);
                 it.Inventory = temp;
-                inventoryItemDic.Add(it.Inventory.Id,it);
-                //有bug
+                it.Count = 1;
+                it.Level = Random.Range(0, 10);
+                inventoryItemList.Add(it);
             }
             else
             {
-                InventoryItem it = null;
-                bool isExit = inventoryItemDic.TryGetValue(id,out it);
-                if (isExit)
+                bool isExit = false;
+                foreach (InventoryItem inventoryItem in inventoryItemList)
                 {
-                    it.Count++;
+                    if (inventoryItem.Inventory.Id == id)
+                    {
+                        isExit = true;
+                        inventoryItem.Count++;
+                        break;
+                    }
                 }
-                else
+                if (!isExit)
                 {
-                    it=new InventoryItem();
+                    InventoryItem it = new InventoryItem();
                     it.Inventory = temp;
                     it.Count = 1;
-                    inventoryItemDic.Add(it.Inventory.Id,it);
-                    
+                    inventoryItemList.Add(it);
                 }
-
             }
         }
 

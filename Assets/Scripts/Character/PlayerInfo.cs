@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia.SharpZipLib.Core;
+
 public  enum InfoType  //角色信息更新枚举
 {
     HeadSprite,
@@ -10,7 +12,10 @@ public  enum InfoType  //角色信息更新枚举
     Energy,
     All,
     Diamond,
-    Coin
+    Coin,
+    Hp,
+    Damage,
+    Exp
 }
 
 public enum DotweenDir
@@ -36,14 +41,14 @@ public class PlayerInfo : MonoBehaviour {
     private int _siderite;//y陨铁
     private int _damage;//伤害
     private int _hp;//血量
-    private int _helmID;//头盔
-    private int _clothID;//衣服
-    private int _weaponID;//武器
-    private int _shoesID;//鞋子
-    private int _necklaceID;//项链
-    private int _braceletID;//手镯
-    private int _ringID;//戒指
-    private int _wingID;//翅膀
+    private int _helmID=0;//头盔
+    private int _clothID=0;//衣服
+    private int _weaponID=0;//武器
+    private int _shoesID=0;//鞋子
+    private int _necklaceID=0;//项链
+    private int _braceletID=0;//手镯
+    private int _ringID=0;//戒指
+    private int _wingID=0;//翅膀
     #endregion
     #region   //属性方法
     public string Name
@@ -331,14 +336,13 @@ public class PlayerInfo : MonoBehaviour {
     void Awake()
     {
         _instance = this;
-     
+      
     }
     
     void Start ()
     {
         Init();
     }
-
     
     void Init()
     {
@@ -353,14 +357,58 @@ public class PlayerInfo : MonoBehaviour {
         _toughen = 14;
         _spar = 1;
         _siderite = 0;
+        //穿上几件装备测试
+        this.BraceletID = 1001;
+        this.WingID = 1002;
+        this.RingID = 1003;
+        this.ClothID = 1004;
+        this.HelmID = 1005;
+        this.WeaponID = 1006;
+        this.NecklaceID = 1007;
+        this.ShoesID = 1008;
+        InitHpDamagePower();
         PlayerInfoChangeEvent(InfoType.All);
        
     }
 
+    void InitHpDamagePower()
+    {
+        this.Hp = Level * 100;
+        this.Damage = Level * 50;
+        this.Power = this.Hp + this.Damage;
+        PutOnEquip(BraceletID);
+        PutOnEquip(WingID);
+        PutOnEquip(RingID);
+        PutOnEquip(ClothID);
+        PutOnEquip(HelmID);
+        PutOnEquip(WeaponID);
+        PutOnEquip(NecklaceID);
+        PutOnEquip(ShoesID);
+    }
+    private void PutOnEquip(int id)
+    {
+        Inventory _inventory = null;
+        if (id==0)return;
+        InventoryManager._instance.inventoryDic.TryGetValue(id, out _inventory);
+        this.Hp += _inventory.Hp;
+        this.Damage += _inventory.Damage;
+        this.Power += _inventory.Power;
+
+
+    }
+
+    private void PutOffEquip(int id)
+    {
+        Inventory _inventory = null;
+        if (id == 0) return;
+        InventoryManager._instance.inventoryDic.TryGetValue(id, out _inventory);
+        this.Hp -= _inventory.Hp;
+        this.Damage -= _inventory.Damage;
+        this.Power -= _inventory.Power;
+    }
     public void ChangeName(string newName)
     {
         this.Name= newName;
-        Debug.Log("ok");
         PlayerInfoChangeEvent(InfoType.Name);
     }
 	void Update () {

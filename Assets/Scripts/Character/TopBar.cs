@@ -13,13 +13,13 @@ public class TopBar : MonoBehaviour
     void Awake()
     {
         PlayerInfo._instance.PlayerInfoChangeEvent += TopBarInfoChange;
-        DiamondPulsButton.onClick.AddListener(DiamondPulsOnClick);
-        CoinPulsButton.onClick.AddListener(CoinPulsOnClick);
     }
     void Start ()
 	{
-	    
-          
+	   
+	    DiamondPulsButton.onClick.AddListener(DiamondPulsOnClick);
+	    CoinPulsButton.onClick.AddListener(CoinPulsOnClick);
+
     }
     /// <summary>
     /// 钻石增加
