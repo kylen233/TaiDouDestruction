@@ -33,6 +33,11 @@ public class PlayBar : MonoBehaviour
         HeadSpiteButton.onClick.AddListener(delegate () { PlayerStatus.ShowOrHidePlayStatus(DotweenDir.forward); });
     }
 
+    void OnDestroy()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent -= PlayerBarInfoChange;
+    }
+
 /// <summary>
 /// 响应注册事件
 /// </summary>

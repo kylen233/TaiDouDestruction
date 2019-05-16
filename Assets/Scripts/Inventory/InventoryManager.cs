@@ -10,9 +10,10 @@ public class InventoryManager : MonoBehaviour
     private TextAsset inventoryInfoList;
     public Dictionary<int, Inventory> inventoryDic=new Dictionary<int, Inventory>();
   //  private Dictionary<int,InventoryItem> inventoryItemDic=new Dictionary<int, InventoryItem>();
-    private List<InventoryItem> inventoryItemList = new List<InventoryItem>();
+    public List<InventoryItem> inventoryItemList = new List<InventoryItem>();
     public static InventoryManager _instance;
-
+    public delegate void OnInvetoryItemChange();
+    public event OnInvetoryItemChange OnInventoryItemChangeEvent;
 
     void Awake()
     {
@@ -20,10 +21,7 @@ public class InventoryManager : MonoBehaviour
         ReadInventoryInfo();
         ReadInventoryItemInfo();
     }
-	void Start ()
-	{
-
-	}
+	
 
     void ReadInventoryInfo()//初始化物品信息
     {
@@ -168,6 +166,19 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
+        StartCoroutine(OnInventoryItemChange());
+    }
 
+    IEnumerator OnInventoryItemChange() //防止调用时事件未被注册上
+    {
+        if (OnInventoryItemChangeEvent==null)
+        {
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(OnInventoryItemChange());
+        }
+        else
+        {
+            OnInventoryItemChangeEvent();
+        }
     }
 }

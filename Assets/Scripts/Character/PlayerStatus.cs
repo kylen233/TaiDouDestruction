@@ -39,8 +39,11 @@ public class PlayerStatus : MonoBehaviour
 	 
 	    CloseButton.onClick.AddListener(delegate () { ShowOrHidePlayStatus(DotweenDir.back); });
     }
-	
 
+    void OnDestroy()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent -= PlayerStatusInfoChange;
+    }
 	void Update () {
 	 
 	}

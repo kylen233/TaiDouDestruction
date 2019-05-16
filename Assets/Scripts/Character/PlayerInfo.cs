@@ -15,10 +15,11 @@ public  enum InfoType  //角色信息更新枚举
     Coin,
     Hp,
     Damage,
-    Exp
+    Exp,
+    Equip
 }
 
-public enum DotweenDir
+public enum DotweenDir//动画播放方向
 {
     forward,
     back
@@ -27,7 +28,6 @@ public enum DotweenDir
 public class PlayerInfo : MonoBehaviour {
 
     #region   人物属性
-
     private string _name;//玩家姓名
     private string _headPortrait;//头像
     private int _level = 1;//等级
@@ -41,14 +41,14 @@ public class PlayerInfo : MonoBehaviour {
     private int _siderite;//y陨铁
     private int _damage;//伤害
     private int _hp;//血量
-    private int _helmID=0;//头盔
-    private int _clothID=0;//衣服
-    private int _weaponID=0;//武器
-    private int _shoesID=0;//鞋子
-    private int _necklaceID=0;//项链
-    private int _braceletID=0;//手镯
-    private int _ringID=0;//戒指
-    private int _wingID=0;//翅膀
+    private InventoryItem helmInventoryItem;
+    private InventoryItem clothInventoryItem;
+    private InventoryItem weaponInventoryItem;
+    private InventoryItem shoesInventoryItem;
+    private InventoryItem necklaceInventoryItem;
+    private InventoryItem braceletInventoryItem;
+    private InventoryItem ringInventoryItem;
+    private InventoryItem wingInventoryItem;
     #endregion
     #region   //属性方法
     public string Name
@@ -220,111 +220,112 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
-    public int HelmID
+    public InventoryItem HelmInventoryItem
     {
         get
         {
-            return _helmID;
+            return helmInventoryItem;
         }
 
         set
         {
-            _helmID = value;
+            helmInventoryItem = value;
         }
     }
 
-    public int ClothID
+    public InventoryItem ClothInventoryItem
     {
         get
         {
-            return _clothID;
+            return clothInventoryItem;
         }
 
         set
         {
-            _clothID = value;
+            clothInventoryItem = value;
         }
     }
 
-    public int WeaponID
+    public InventoryItem WeaponInventoryItem
     {
         get
         {
-            return _weaponID;
+            return weaponInventoryItem;
         }
 
         set
         {
-            _weaponID = value;
+            weaponInventoryItem = value;
         }
     }
 
-    public int ShoesID
+    public InventoryItem ShoesInventoryItem
     {
         get
         {
-            return _shoesID;
+            return shoesInventoryItem;
         }
 
         set
         {
-            _shoesID = value;
+            shoesInventoryItem = value;
         }
     }
 
-    public int NecklaceID
+    public InventoryItem NecklaceInventoryItem
     {
         get
         {
-            return _necklaceID;
+            return necklaceInventoryItem;
         }
 
         set
         {
-            _necklaceID = value;
+            necklaceInventoryItem = value;
         }
     }
 
-    public int BraceletID
+    public InventoryItem BraceletInventoryItem
     {
         get
         {
-            return _braceletID;
+            return braceletInventoryItem;
         }
 
         set
         {
-            _braceletID = value;
+            braceletInventoryItem = value;
         }
     }
 
-    public int RingID
+    public InventoryItem RingInventoryItem
     {
         get
         {
-            return _ringID;
+            return ringInventoryItem;
         }
 
         set
         {
-            _ringID = value;
+            ringInventoryItem = value;
         }
     }
 
-    public int WingID
+    public InventoryItem WingInventoryItem
     {
         get
         {
-            return _wingID;
+            return wingInventoryItem;
         }
 
         set
         {
-            _wingID = value;
+            wingInventoryItem = value;
         }
     }
+
+
     #endregion
-
     public static PlayerInfo _instance;
     [HideInInspector]
     public float energyTimer=0;
@@ -333,7 +334,7 @@ public class PlayerInfo : MonoBehaviour {
     public delegate void PlayerInfoChangeDelegate(InfoType infoType);
     public event PlayerInfoChangeDelegate PlayerInfoChangeEvent;
 
-    void Awake()
+    void Awake()//初始化单例
     {
         _instance = this;
       
@@ -344,7 +345,7 @@ public class PlayerInfo : MonoBehaviour {
         Init();
     }
     
-    void Init()
+    void Init() //初始化人物信息
     {
         _name = "Kylen233";
         _headPortrait = "头像底板女性";
@@ -358,46 +359,123 @@ public class PlayerInfo : MonoBehaviour {
         _spar = 1;
         _siderite = 0;
         //穿上几件装备测试
-        this.BraceletID = 1001;
-        this.WingID = 1002;
-        this.RingID = 1003;
-        this.ClothID = 1004;
-        this.HelmID = 1005;
-        this.WeaponID = 1006;
-        this.NecklaceID = 1007;
-        this.ShoesID = 1008;
+        //this.BraceletID = 1001;
+        //this.WingID = 1002;
+        //this.RingID = 1003;
+        //this.ClothID = 1004;
+        //this.HelmID = 1005;
+        //this.WeaponID = 1006;
+        //this.NecklaceID = 1007;
+        //this.ShoesID = 1008;
         InitHpDamagePower();
         PlayerInfoChangeEvent(InfoType.All);
        
     }
 
-    void InitHpDamagePower()
+    void InitHpDamagePower()//初始化人物血量上海战斗力
     {
         this.Hp = Level * 100;
-        this.Damage = Level * 50;
+        this.Damage = Damage * 50;
         this.Power = this.Hp + this.Damage;
-        PutOnEquip(BraceletID);
-        PutOnEquip(WingID);
-        PutOnEquip(RingID);
-        PutOnEquip(ClothID);
-        PutOnEquip(HelmID);
-        PutOnEquip(WeaponID);
-        PutOnEquip(NecklaceID);
-        PutOnEquip(ShoesID);
-    }
-    private void PutOnEquip(int id)
-    {
-        Inventory _inventory = null;
-        if (id==0)return;
-        InventoryManager._instance.inventoryDic.TryGetValue(id, out _inventory);
-        this.Hp += _inventory.Hp;
-        this.Damage += _inventory.Damage;
-        this.Power += _inventory.Power;
-
-
     }
 
-    private void PutOffEquip(int id)
+   public void DressEquip(InventoryItem it)//人物穿上装备
+    { 
+        //是直接穿上，否卸下当前装备穿上新装备
+     
+        it.isDress = true;
+        //当前是否已经穿了装备
+        bool isDress = false;
+        InventoryItem currentInventoryItem = null;
+        switch (it.Inventory.EquipType)
+        {
+            case EquipType.Bracelet:
+                if (BraceletInventoryItem!=null)
+                {
+                    currentInventoryItem = BraceletInventoryItem;
+
+                    isDress = true;
+                }
+
+                BraceletInventoryItem = it;
+                break;
+            case EquipType.Cloth:
+                if (ClothInventoryItem != null)
+                {
+                    currentInventoryItem = ClothInventoryItem;
+                    isDress = true;
+                }
+                ClothInventoryItem = it;
+                break;
+            case EquipType.Helm:
+                if (HelmInventoryItem != null)
+                {
+                    currentInventoryItem = HelmInventoryItem;
+                    isDress = true;
+                    
+                }
+                HelmInventoryItem = it;
+                break;
+            case EquipType.Necklace:
+                if (NecklaceInventoryItem != null)
+                {
+                    currentInventoryItem = NecklaceInventoryItem;
+                    isDress = true;
+                }
+                NecklaceInventoryItem = it;
+                break;
+            case EquipType.Ring:
+                if (RingInventoryItem != null)
+                {
+                    currentInventoryItem = RingInventoryItem;
+                  
+                    isDress = true;
+                }
+                RingInventoryItem = it;
+                break;
+            case EquipType.Shoes:
+                if (ShoesInventoryItem != null)
+                {
+                    currentInventoryItem = ShoesInventoryItem;
+                   
+                    isDress = true;
+                }
+                ShoesInventoryItem = it;
+                break;
+            case EquipType.Weapon:
+                if (WeaponInventoryItem != null)
+                {
+                    currentInventoryItem = WeaponInventoryItem;
+                  
+                    isDress = true;
+                }
+                WeaponInventoryItem = it;
+                break;
+            case EquipType.Wing:
+                if (WingInventoryItem != null)
+                {
+                    currentInventoryItem = WingInventoryItem; 
+                    isDress = true;
+                }
+                WingInventoryItem = it;
+                break;
+
+        }
+
+        if (isDress)
+        {
+            InventoryUI._instance.AddInventoryItem(currentInventoryItem);
+            currentInventoryItem.isDress = false;
+            PlayerInfoChangeEvent(InfoType.Equip);
+            
+        }
+        PlayerInfoChangeEvent(InfoType.Equip);
+        this.Hp += it.Inventory.Hp;
+        this.Damage += it.Inventory.Damage;
+        this.Power += it.Inventory.Power;
+    }
+
+    private void PutOffEquip(int id)//
     {
         Inventory _inventory = null;
         if (id == 0) return;
@@ -406,14 +484,14 @@ public class PlayerInfo : MonoBehaviour {
         this.Damage -= _inventory.Damage;
         this.Power -= _inventory.Power;
     }
-    public void ChangeName(string newName)
+    public void ChangeName(string newName)//角色改名
     {
         this.Name= newName;
         PlayerInfoChangeEvent(InfoType.Name);
     }
-	void Update () {
-    //    Debug.Log("体力时间"+energyTimer);
-    //    Debug.Log("历练时间"+toughenTimer);
+	void Update () //更新体力历练自动增长
+    {
+  
 	    if (_energy<100)  
 	    {
 	        energyTimer += Time.deltaTime;

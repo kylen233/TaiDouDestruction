@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,14 +28,18 @@ public class KnapsackCharacter : MonoBehaviour
     {
      
     }
-	
+
+    void OnDestroy()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent -= KnapsackCharacterInfoChange;
+    }
 	void Update () {
 		
 	}
 
     public void KnapsackCharacterInfoChange(InfoType infoType)
     {
-        if (infoType==InfoType.All||infoType == InfoType.Hp||infoType==InfoType.Exp||infoType==InfoType.Damage)
+        if (infoType==InfoType.All||infoType == InfoType.Hp||infoType==InfoType.Exp||infoType==InfoType.Damage||infoType == InfoType.Equip)
         {
             UpdateShow();
         }
@@ -42,31 +48,22 @@ public class KnapsackCharacter : MonoBehaviour
     void UpdateShow()
     {
         PlayerInfo _playerInfo=PlayerInfo._instance;
-        helmImage.SetEquipImage(GetEquipName(_playerInfo.HelmID));
-        weaponImage.SetEquipImage(GetEquipName(_playerInfo.WeaponID));
-        wingImage.SetEquipImage(GetEquipName(_playerInfo.WingID));
-        ShoesImage.SetEquipImage(GetEquipName(_playerInfo.ShoesID));
-        clothImage.SetEquipImage(GetEquipName(_playerInfo.ClothID));
-        braceletImage.SetEquipImage(GetEquipName(_playerInfo.BraceletID));
-        necklaceImage.SetEquipImage(GetEquipName(_playerInfo.NecklaceID));
-        ringImage.SetEquipImage(GetEquipName(_playerInfo.RingID));
+        helmImage.SetInventoryItem(_playerInfo.HelmInventoryItem);
+        weaponImage.SetInventoryItem(_playerInfo.WeaponInventoryItem);
+        wingImage.SetInventoryItem(_playerInfo.WingInventoryItem);
+        ShoesImage.SetInventoryItem(_playerInfo.ShoesInventoryItem);
+        clothImage.SetInventoryItem(_playerInfo.ClothInventoryItem);
+        braceletImage.SetInventoryItem(_playerInfo.BraceletInventoryItem);
+        necklaceImage.SetInventoryItem(_playerInfo.NecklaceInventoryItem);
+        ringImage.SetInventoryItem(_playerInfo.RingInventoryItem);
         hpText.text = _playerInfo.Hp.ToString();
         expText.text = _playerInfo.Exp.ToString() + "/" + MyTool.GetExpValue(_playerInfo.Level + 1);
-        expSlider.value = (float) _playerInfo.Exp / MyTool.GetExpValue(_playerInfo.Level + 1);
+        expSlider.value = (float)_playerInfo.Exp / MyTool.GetExpValue(_playerInfo.Level + 1);
         damageText.text = _playerInfo.Damage.ToString();
     }
 
-    string GetEquipName(int id)
-    {
-        Inventory _inventory = null;
-        bool isExit = InventoryManager._instance.inventoryDic.TryGetValue(id, out _inventory);
-        if (isExit)
-        {
-            return _inventory.Icon;
-        }
-        else
-        {
-            return null;
-        }
-    }
+   
+
+   
+
 }

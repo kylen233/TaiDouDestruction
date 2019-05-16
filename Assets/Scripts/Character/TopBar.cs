@@ -21,6 +21,11 @@ public class TopBar : MonoBehaviour
 	    CoinPulsButton.onClick.AddListener(CoinPulsOnClick);
 
     }
+
+    void OnDestroy()
+    {
+        PlayerInfo._instance.PlayerInfoChangeEvent -= TopBarInfoChange;
+    }
     /// <summary>
     /// 钻石增加
     /// </summary>

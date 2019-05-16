@@ -326,9 +326,14 @@
     <Compile Include="Assets\Scripts\Character\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Character\TopBar.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipCharacterPopup.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipPopup.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryItemUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryPopup.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Knapsack\KnapsackCharacter.cs" />
     <Compile Include="Assets\Scripts\Knapsack\KnapsackCharacterEquip.cs" />
     <Compile Include="Assets\Scripts\Server\ServerProperty.cs" />
@@ -336,9 +341,9 @@
     <Compile Include="Assets\Scripts\tool\Gradient.cs" />
     <Compile Include="Assets\Scripts\tool\MyTool.cs" />
     <Compile Include="Assets\Scripts\tool\RotateWithMouse.cs" />
+    <Compile Include="Assets\Scripts\UI\scripts\characterRotate.cs" />
+    <Compile Include="Assets\Scripts\UI\scripts\characterShow.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenuController.cs" />
-    <Compile Include="Assets\villarger_B_Boy\scripts\characterRotate.cs" />
-    <Compile Include="Assets\villarger_B_Boy\scripts\characterShow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

@@ -8,7 +8,7 @@ public class InventoryItem
     private Inventory inventory;//物品基本属性类
     private int count;//物品数量
     private int level;//物品等级
-
+    public bool isDress = false;
 
 
     #region getSet方法
