@@ -39,8 +39,10 @@ public class KnapsackCharacter : MonoBehaviour
 
     public void KnapsackCharacterInfoChange(InfoType infoType)
     {
+       
         if (infoType==InfoType.All||infoType == InfoType.Hp||infoType==InfoType.Exp||infoType==InfoType.Damage||infoType == InfoType.Equip)
         {
+            Debug.Log("更新了");
             UpdateShow();
         }
     }

@@ -353,7 +353,7 @@ public class PlayerInfo : MonoBehaviour {
         _power = 4396;
         _exp = 200;
         _diamond = 231;
-        _coin = 54;
+        _coin = 54000;
         _energy = 37;
         _toughen = 14;
         _spar = 1;
@@ -372,14 +372,36 @@ public class PlayerInfo : MonoBehaviour {
        
     }
 
-    void InitHpDamagePower()//初始化人物血量上海战斗力
+    void InitHpDamagePower()//初始化人物血量伤害战斗力
     {
         this.Hp = Level * 100;
         this.Damage = Damage * 50;
         this.Power = this.Hp + this.Damage;
     }
+    public void UseInventory(InventoryItem it)
+    {
+        if (it.Count<=0)
+        {
+            InventoryManager._instance.inventoryItemList.Remove(it);
+            Debug.Log("物品已经移除");
+        }
+    }
+   public bool GetCoin(int needCoin)
+    {
+        if (this.Coin-needCoin>0)
+        {
+            this.Coin -= needCoin;
+            Debug.Log("消耗了"+needCoin+"个金币");
+            PlayerInfoChangeEvent(InfoType.Coin);
+            MessageManager._instance.ShowMessage("升级成功", 0.2f);
+            return true;
+        }
+        MessageManager._instance.ShowMessage("金币不足",0.2f);
+        Debug.Log("金币不足");
+        return false;
+    }
 
-   public void DressEquip(InventoryItem it)//人物穿上装备
+   public void DressEquip(InventoryItem it)//穿上装备
     { 
         //是直接穿上，否卸下当前装备穿上新装备
      
@@ -469,21 +491,70 @@ public class PlayerInfo : MonoBehaviour {
             PlayerInfoChangeEvent(InfoType.Equip);
             
         }
-        PlayerInfoChangeEvent(InfoType.Equip);
+      
         this.Hp += it.Inventory.Hp;
         this.Damage += it.Inventory.Damage;
         this.Power += it.Inventory.Power;
+        PlayerInfoChangeEvent(InfoType.Equip);
+        Debug.Log("加状态");
+        Debug.Log("当前状态" + this.Hp + " " + this.Damage + "" + this.Power);
     }
 
-    private void PutOffEquip(int id)//
+    public void PutoffEquip(InventoryItem it)//脱下装备
     {
-        Inventory _inventory = null;
-        if (id == 0) return;
-        InventoryManager._instance.inventoryDic.TryGetValue(id, out _inventory);
-        this.Hp -= _inventory.Hp;
-        this.Damage -= _inventory.Damage;
-        this.Power -= _inventory.Power;
+        //是直接穿上，否卸下当前装备穿上新装备
+
+        it.isDress = false;
+        //当前是否已经穿了装备
+     
+        InventoryItem currentInventoryItem = null;
+        switch (it.Inventory.EquipType)
+        {
+            case EquipType.Bracelet:     
+                currentInventoryItem = BraceletInventoryItem;
+                BraceletInventoryItem = null;
+                break;
+            case EquipType.Cloth:
+                currentInventoryItem = ClothInventoryItem;
+                ClothInventoryItem = null; 
+                break;
+            case EquipType.Helm:
+                if (HelmInventoryItem!=null)
+                {
+                    currentInventoryItem = HelmInventoryItem;
+                    HelmInventoryItem = null;
+                }
+               
+                break;
+            case EquipType.Necklace:
+                currentInventoryItem = NecklaceInventoryItem;
+                NecklaceInventoryItem = null;
+                break;
+            case EquipType.Ring:
+                currentInventoryItem = RingInventoryItem;
+                RingInventoryItem = null;
+                break;
+            case EquipType.Shoes:
+                currentInventoryItem = ShoesInventoryItem;
+                ShoesInventoryItem = null;
+                break;
+            case EquipType.Weapon:
+                currentInventoryItem = WeaponInventoryItem;
+                WeaponInventoryItem = null;
+                break;
+            case EquipType.Wing:
+                currentInventoryItem = WingInventoryItem;
+                WingInventoryItem = null;
+                break;
+        }
+        InventoryUI._instance.AddInventoryItem(currentInventoryItem);
+       
+        this.Hp -= it.Inventory.Hp;
+        this.Damage -= it.Inventory.Damage;
+        this.Power -= it.Inventory.Power;
+        PlayerInfoChangeEvent(InfoType.Equip);
     }
+
     public void ChangeName(string newName)//角色改名
     {
         this.Name= newName;

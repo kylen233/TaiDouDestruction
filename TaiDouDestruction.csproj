@@ -262,6 +262,9 @@
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>D:/Program Files/unity17.3/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>D:/Program Files/unity17.3/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:/Program Files/unity17.3/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -319,6 +322,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/admin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>D:/Program Files/unity17.3/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>D:/Program Files/unity17.3/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
@@ -336,6 +345,7 @@
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Knapsack\KnapsackCharacter.cs" />
     <Compile Include="Assets\Scripts\Knapsack\KnapsackCharacterEquip.cs" />
+    <Compile Include="Assets\Scripts\Message\MessageManager.cs" />
     <Compile Include="Assets\Scripts\Server\ServerProperty.cs" />
     <Compile Include="Assets\Scripts\tool\Cube.cs" />
     <Compile Include="Assets\Scripts\tool\Gradient.cs" />

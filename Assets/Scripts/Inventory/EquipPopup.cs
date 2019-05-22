@@ -17,7 +17,7 @@ public class EquipPopup : MonoBehaviour
     public GameObject EquipPopupGo;
     public GameObject EquipCharacterPopupGo;
     private InventoryItem currentIt;
-    private InventoryItemUI currentItUI;
+    public InventoryItemUI currentItUI;
     public Text equipButtonText;
     void Awake()
     {
@@ -27,21 +27,32 @@ public class EquipPopup : MonoBehaviour
 		
 	}
 
-    public  void OnEquipClick(InventoryItem it,bool isLeft,InventoryItemUI itui)//当装备被点击是弹出装备信息
+    public void UpgradeEquip()
+    {
+        int needCoin = (currentIt.Level + 1) * currentIt.Inventory.Price;
+        if (PlayerInfo._instance.GetCoin(needCoin))
+        {
+            currentIt.Level++;
+            LevelText.text = "等级" + "     " + currentIt.Level.ToString();
+            Debug.Log("装备升级成功");
+            return;
+        }
+        Debug.Log("升级失败");
+    }
+    public  void OnEquipClick(InventoryItem it,bool isLeft,InventoryItemUI itui,KnapsackCharacterEquip kcep)//当装备被点击是弹出装备信息
     {
         if (it == null||it.Inventory.InventoryType!=InventoryType.Equip) return;
         Vector3 tempPos = EquipPopupGo.transform.localPosition;
+        currentIt = it;
+        currentItUI = itui;
         if (!isLeft)
-        {
-            
-            currentIt = it;
-            currentItUI = itui;
+        { 
             equipButtonText.text = "装备";
         }
         else
         {
             EquipCharacterPopupGo.SetActive(true);
-            EquipCharacterPopup._instance.UpdateShow(it);
+            EquipCharacterPopup._instance.UpdateShow(it,itui,kcep);
             return;
         }
         EquipPopupGo.SetActive(true);
@@ -55,19 +66,20 @@ public class EquipPopup : MonoBehaviour
         LevelText.text = "等级" + "     " + it.Level;
     }
 
-    public void OnCloseClick()
+    public void OnCloseClick()//关闭窗口
     {
         currentIt = null;
         EquipPopupGo.SetActive(false);
     }
-    public void OnDresseEquip()
+    public void OnDresseEquip()//穿上装备
     {
         EquipPopupGo.SetActive(false);
         PlayerInfo._instance.DressEquip(currentIt);
         currentItUI.Clear();
         currentIt = null; 
-        currentItUI = null;
-       
+      
     }
+
+   
 
 }

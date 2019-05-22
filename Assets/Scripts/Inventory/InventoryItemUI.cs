@@ -58,7 +58,26 @@ public class InventoryItemUI : MonoBehaviour,IPointerClickHandler
 		
 	}
 
-    public void SetInventoryItem(InventoryItem inventoryItem)
+    public void ChangeCount(int count)
+    {
+        inventoryItem.Count--;
+        if (inventoryItem.Count<=0)
+        {
+            Clear();
+            return;
+        }  
+        if (inventoryItem.Count==1)
+        {
+            InventoryNumberText.text = "";
+            return;
+        }
+        else
+        {
+            InventoryNumberText.text = inventoryItem.Count.ToString();
+
+        }
+    }
+    public void SetInventoryItem(InventoryItem inventoryItem)//设置物品
     {
         if (inventoryItem==null)
         {
@@ -79,19 +98,19 @@ public class InventoryItemUI : MonoBehaviour,IPointerClickHandler
         this.inventoryItem = inventoryItem;
     }
 
-    public void Clear()
+    public void Clear()//清除信息
     {
         Sprite temp = Resources.Load<Sprite>("bg_道具");
         InvenroyImage.sprite = temp;
         InventoryNumberText.text = "";
         inventoryItem = null;
-        
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        EquipPopup._instance.OnEquipClick(inventoryItem,false,this);
-        InventoryPopup._instance.OnInventoryClick(inventoryItem);
+        EquipPopup._instance.OnEquipClick(inventoryItem,false,this,null);
+        InventoryPopup._instance.OnInventoryClick(inventoryItem,this);
     }
 
   

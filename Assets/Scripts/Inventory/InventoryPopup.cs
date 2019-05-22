@@ -9,6 +9,8 @@ public class InventoryPopup : MonoBehaviour
     public Text inventoryDescribe;
     public Image inventoryImage;
     public GameObject inventoryGo;
+    private InventoryItem currentItem;
+    private InventoryItemUI currentItemUI;
     public static InventoryPopup _instance;
 
     void Awake()
@@ -24,12 +26,23 @@ public class InventoryPopup : MonoBehaviour
 		
 	}
 
-    public void OnInventoryClick(InventoryItem it)
+    public void OnUse()
+    {
+        currentItemUI.ChangeCount(1);
+        PlayerInfo._instance.UseInventory(currentItem);
+    }
+    public void OnUseBatching()
+    {
+        currentItemUI.ChangeCount(currentItem.Count);
+    }
+    public void OnInventoryClick(InventoryItem it,InventoryItemUI itUi)//物品被点击
     {
         if (it==null||it.Inventory.InventoryType==InventoryType.Equip)
         {
             return;
         }
+        currentItem = it;
+        currentItemUI = itUi;
         inventoryGo.SetActive(true);
         inventoryName.text = it.Inventory.Name;
         inventoryDescribe.text = it.Inventory.Describe;
@@ -37,8 +50,14 @@ public class InventoryPopup : MonoBehaviour
         inventoryImage.sprite = temp;        
     }
 
+    public void Clear()
+    {
+        currentItem = null;
+        currentItemUI = null;
+    }
     public void OnCloseButton()
     {
+        Clear();
         inventoryGo.SetActive(false);
     }
 }

@@ -26,7 +26,13 @@ public class KnapsackCharacterEquip : MonoBehaviour,IPointerClickHandler
         }
     }
 
-    private InventoryItem it;
+    public  InventoryItem it;
+    public static KnapsackCharacterEquip _instance;
+
+    void Awake()
+    {
+        _instance = this;
+    }
     void Start () {
 		
 	}
@@ -36,18 +42,7 @@ public class KnapsackCharacterEquip : MonoBehaviour,IPointerClickHandler
 		
 	}
 
-    //public void SetEquipImage(InventoryItem inventoryItem)//更换装备图片
-    //{
-    //   Sprite equipSprite=  Resources.Load<Sprite>(inventoryItem.Inventory.Icon);
-    //    if (equipSprite==null)
-    //    {
-    //        Debug.Log("查找装备图片失败");
-    //    }
-    //    else
-    //    {
-    //       EquipImage.sprite = equipSprite;
-    //    }
-    //}
+
     public void SetInventoryItem(InventoryItem _inventoryItem)
     {
         if (_inventoryItem==null)return;
@@ -56,8 +51,17 @@ public class KnapsackCharacterEquip : MonoBehaviour,IPointerClickHandler
         EquipImage.sprite = equipSprite;
 
     }
+
+    public void Clear()
+    {
+        Sprite temp = Resources.Load<Sprite>("bg_道具");
+        equipImage.sprite = temp;
+        it = null;
+        
+
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
-        EquipPopup._instance.OnEquipClick(it, true,null);
+        EquipPopup._instance.OnEquipClick(it, true,null,this);
     }
 }
